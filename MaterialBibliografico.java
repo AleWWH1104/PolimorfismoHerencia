@@ -1,29 +1,27 @@
 public class MaterialBibliografico {
     String nombre;
-    String apellido;
     String editorial;
     Integer año_publicacion;
     String genero;
-    String autor;
+    String autorN;
+    String autorA;
     String tipo;
     
-    public MaterialBibliografico(String nombre, String editorial, Integer año_publicacion, String genero, String autor,String apellido, String tipo){
+    public MaterialBibliografico(String nombre, String editorial, Integer año_publicacion, String genero, String autorN, String autorA, String tipo){
         this.nombre = nombre;
         this.editorial = editorial;
         this.año_publicacion = año_publicacion;
         this.genero = genero;
-        this.autor = autor;
+        this.autorN = autorN;
+        this.autorA = autorA;
         this.tipo = tipo;
-        this.apellido = apellido;
     }
 
     public String generarReferencia(){
         return "Rerencias APA";
     }
 
-    public String getNombre(String nombre, String apellido){
-        char primeraLetra = nombre.charAt(0);
-        nombre = apellido + "." + primeraLetra + ".";
+    public String getNombre(){
         return nombre;
     }
     public String getEditorial(){
@@ -36,10 +34,22 @@ public class MaterialBibliografico {
         return genero;
     }
     public String getAutor(){
-        return autor;
+        return autorA;
     }
 
     public String getTipo(){
         return tipo;
     }
+
+    public String nombreReferencia(String nombre, String apellido){
+        char primeraLetra = nombre.charAt(0);
+        String nombreR = apellido + "." + primeraLetra + ".";
+        return nombreR;
+    }
+    @Override
+    public String toString() {
+    return "Nombre: " + nombre + ", Editorial: " + editorial + ", Año de Publicación: " + año_publicacion +
+           ", Género: " + genero + ", Autor: " + autorN + " "+ autorA + ", Tipo: " + tipo;
+    }
+
 }

@@ -4,7 +4,29 @@ import java.util.Scanner;
 
 public class DriverProgram {
     private List<MaterialBibliografico> catalogo = new ArrayList<>();
+    // Ruta del archivo CSV
+    String rutaArchivo = "/Users/alejandraayala/Desktop/Proyectos_POOS2/PolimorfismoHerencia/Bibliografias.csv";
 
+    public DriverProgram(){
+        // Crear un objeto para leer el archivo existente
+        FileManager lector = new FileManager(rutaArchivo);
+        List<String[]> contenidoCSV = lector.leerCSV();
+
+        // Procesar el contenido del archivo CSV si es necesario
+        for (String[] fila : contenidoCSV) {
+            // Realizar operaciones con las filas, si es necesario
+            for (String elemento : fila) {
+                System.out.print(elemento + " ");
+            }
+            System.out.println();
+        }
+        datos();
+        // System.out.println("_____Impresion Lista_____");
+        // for (MaterialBibliografico referencia: catalogo){
+        //     System.out.println(referencia);
+        // }
+    }
+    
     public void datos(){
         Scanner in = new Scanner(System.in);
         System.out.print("Nombre del material: ");
@@ -23,28 +45,18 @@ public class DriverProgram {
         String tipo = in.nextLine();
         
         if ("1".equalsIgnoreCase(tipo)) {
-            Libro libro = new Libro(nombre, editorial, anio, genero, autorN, autorA, tipo);
+            Libro libro = new Libro(nombre, editorial, anio, genero, autorN, autorA, "Libro");
             catalogo.add(libro);
+            System.out.println("------Impresion de Referencia------");
+            String referenciaL =libro.generarReferencia();
+            System.out.println(referenciaL);
+        } else if ("2".equalsIgnoreCase(tipo)){
+
         }
     }
         
     public static void main(String[] args) {
-        // Ruta del archivo CSV
-        String rutaArchivo = "/Users/alejandraayala/Desktop/Proyectos_POOS2/PolimorfismoHerencia/Bibliografias.csv";
-
-        // Crear un objeto para leer el archivo existente
-        FileManager lector = new FileManager(rutaArchivo);
-        List<String[]> contenidoCSV = lector.leerCSV();
-
-        // Procesar el contenido del archivo CSV si es necesario
-        for (String[] fila : contenidoCSV) {
-            // Realizar operaciones con las filas, si es necesario
-            for (String elemento : fila) {
-                System.out.print(elemento + " ");
-            }
-            System.out.println();
-        }
-        
-        
+        //Instancia del Driver para acceder a las demas funciones
+        DriverProgram main = new DriverProgram();
     }
 }
