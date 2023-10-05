@@ -26,12 +26,12 @@ public class DriverProgram {
         //     System.out.println(referencia);
         // }
     }
-    
+
     public void datos(){
         Scanner in = new Scanner(System.in);
         System.out.print("Nombre del material: ");
         String nombre = in.nextLine();
-        System.out.print("Editorial: ");
+        System.out.print("Editorial/Compañia: ");
         String editorial = in.nextLine();
         System.out.print("Año de publicacion: ");
         Integer anio = Integer.parseInt(in.nextLine());
@@ -41,7 +41,7 @@ public class DriverProgram {
         String autorA = in.nextLine();
         System.out.print("Nombre Autor: ");
         String autorN = in.nextLine();
-        System.out.print("Tipo \n1.Libro\n2.DVD \n3.Tesis\n4.Articulo Cientifico\n5.Periodico");
+        System.out.print("Tipo \n1.Libro\n2.DVD \n3.Periodico\n4.Articulo Cientifico\n5.Tesis\n");
         String tipo = in.nextLine();
         
         if ("1".equalsIgnoreCase(tipo)) {
@@ -51,7 +51,19 @@ public class DriverProgram {
             String referenciaL =libro.generarReferencia();
             System.out.println(referenciaL);
         } else if ("2".equalsIgnoreCase(tipo)){
-
+            DVD dvd = new DVD(nombre, editorial, anio, genero, autorN, autorA, "DVD");
+            catalogo.add(dvd);
+            System.out.println("------Impresion de Referencia------");
+            String referenciaD =dvd.generarReferencia();
+            System.out.println(referenciaD);   
+        } else if ("3".equalsIgnoreCase(tipo)){
+            System.out.print("Ingrese link: ");
+            String link = in.nextLine();
+            Periodico per = new Periodico(nombre, editorial, anio, genero, autorN, autorA, "Periodico", link);
+            catalogo.add(per);
+            System.out.println("------Impresion de Referencia------");
+            String referenciaP =per.generarReferencia();
+            System.out.println(referenciaP); 
         }
     }
         
