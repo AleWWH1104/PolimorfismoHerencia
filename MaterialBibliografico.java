@@ -6,6 +6,15 @@ public class MaterialBibliografico {
     String autor;
     String tipo;
     
+    public MaterialBibliografico(String nombre, String editorial, Integer año_publicacion, String genero, String autor, String tipo){
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.año_publicacion = año_publicacion;
+        this.genero = genero;
+        this.autor = autor;
+        this.tipo = tipo;
+    }
+    
     public void generarReferencia(){
 
     }
