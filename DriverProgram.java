@@ -36,7 +36,7 @@ public class DriverProgram {
 
             case "3":
 
-                //mostrarCatalogoConCitas(lector);
+                mostrarCatalogoConCitas(lector, lectorCitas);
                 break;
 
             case "4":
@@ -67,7 +67,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaL =libro.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaL);
+            lectorCitas.agregarCitaAPA(referenciaL + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
             System.out.println(referenciaL);
 
         } else if ("2".equalsIgnoreCase(tipo)){
@@ -76,7 +76,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaD =dvd.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaD);
+            lectorCitas.agregarCitaAPA(referenciaD + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
             System.out.println(referenciaD);   
 
         } else if ("3".equalsIgnoreCase(tipo)){
@@ -87,7 +87,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaP =per.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaP);
+            lectorCitas.agregarCitaAPA(referenciaP + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
             System.out.println(referenciaP); 
 
         } else if ("4".equalsIgnoreCase(tipo)){
@@ -101,7 +101,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaAC =artCient.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaAC);
+            lectorCitas.agregarCitaAPA(referenciaAC + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
             System.out.println(referenciaAC); 
 
         } else if ("5".equalsIgnoreCase(tipo)){
@@ -113,7 +113,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaT =tesis.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaT);
+            lectorCitas.agregarCitaAPA(referenciaT + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
             System.out.println(referenciaT); 
 
 
@@ -154,18 +154,26 @@ public class DriverProgram {
 
     } 
 
-    /*
-    public void mostrarCatalogoConCitas(FileManager lector) {
-        List<String[]> contenidoExistente = lector.leerCSV();
-
-        System.out.println("Catalogo con Citas:");
-        for (MaterialBibliografico material : catalogo) {
-            String referencia = material.generarReferencia();
-            System.out.println(referencia);
-        }
-    } 
-    */
+    public void mostrarCatalogoConCitas(FileManager lectorBibliografias, FileManager lectorCitas) {
+        List<String[]> contenidoBibliografias = lectorBibliografias.leerCSV();
+        List<String[]> contenidoCitas = lectorCitas.leerCSV();
     
+        if (contenidoBibliografias.size() != contenidoCitas.size()) {
+            System.out.println("Los archivos no tienen la misma cantidad de líneas.");
+            return;
+        }
+    
+        System.out.println("Catalogo con Citas:");
+    
+        for (int i = 0; i < contenidoBibliografias.size(); i++) {
+            String[] filaBibliografias = contenidoBibliografias.get(i);
+            String[] filaCitas = contenidoCitas.get(i);
+    
+            System.out.println("Datos: " + String.join(",", filaBibliografias));
+            System.out.println("Cita: " + String.join(",", filaCitas));
+            System.out.println();
+        }
+    }
         
     public static void main(String[] args) {
         //Instancia del Driver para acceder a las demas funciones

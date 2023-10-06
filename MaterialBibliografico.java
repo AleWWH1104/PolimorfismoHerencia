@@ -41,7 +41,7 @@ public class MaterialBibliografico {
         return tipo;
     }
 
-    public String nombreReferencia(String nombre, String apellido){
+    public static String nombreReferencia(String nombre, String apellido){
         char primeraLetra = nombre.charAt( 0);
         String nombreR = apellido + "," + primeraLetra + ".";
         return nombreR;
