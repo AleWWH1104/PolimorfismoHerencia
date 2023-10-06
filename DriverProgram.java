@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class DriverProgram {
     private List<MaterialBibliografico> catalogo = new ArrayList<>();
     // Ruta del archivo CSV
-    String rutaArchivo = "/Users/alejandraayala/Desktop/Proyectos_POOS2/PolimorfismoHerencia/Bibliografias.csv";
+    //String rutaArchivo = "/Users/alejandraayala/Desktop/Proyectos_POOS2/PolimorfismoHerencia/Bibliografias.csv";
+    String rutaArchivo = "Bibliografias.csv";
 
     public DriverProgram(){
         Scanner in = new Scanner(System.in);
