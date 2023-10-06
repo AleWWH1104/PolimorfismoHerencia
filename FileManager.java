@@ -3,7 +3,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FileManager {
     String rutaArchivo;
@@ -54,5 +56,54 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Espacio Para realizar metodos deel el conteo
+    public Map<String, Integer> contarMaterialesPorGenero() {
+        List<String[]> lineasCSV = leerCSV();
+        Map<String, Integer> conteoPorGenero = new HashMap<>();
+
+        for (String[] fila : lineasCSV) {
+            if (fila.length >= 4) {
+                String genero = fila[3]; // Suponiendo que la columna del género es la cuarta columna
+
+                // Actualizar el conteo para el género actual
+                conteoPorGenero.put(genero, conteoPorGenero.getOrDefault(genero, 0) + 1);
+            }
+        }
+
+        return conteoPorGenero;
+    } 
+
+    public Map<String, Integer> contarMaterialesPorAutor() {
+        List<String[]> lineasCSV = leerCSV();
+        Map<String, Integer> conteoPorAutor = new HashMap<>();
+
+        for (String[] fila : lineasCSV) {
+            if (fila.length >= 5) {
+                String autor = fila[4];
+
+                // Actualizar el conteo para el autor actual
+                conteoPorAutor.put(autor, conteoPorAutor.getOrDefault(autor, 0) + 1);
+            }
+        }
+
+        return conteoPorAutor;
+    }
+
+    public Map<String, Integer> contarMaterialesPorAño() {
+        List<String[]> lineasCSV = leerCSV();
+        Map<String, Integer> conteoPorAño = new HashMap<>();
+
+        for (String[] fila : lineasCSV) {
+            if (fila.length >= 2) {
+                String año = fila[2];
+
+                // Actualizar el conteo para el año actual
+                conteoPorAño.put(año, conteoPorAño.getOrDefault(año, 0) + 1);
+            }
+        }
+
+        return conteoPorAño;
     }
 }

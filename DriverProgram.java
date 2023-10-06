@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class DriverProgram {
@@ -26,6 +27,10 @@ public class DriverProgram {
                 catalogo.clear(); //Se limpia la lista para no sobreescribir en el CSV
                 break;
             case "2":
+                
+                conteoMenu(in, lector);
+                break;
+                
             case "3":
             case "4":
                 salir = true;
@@ -99,6 +104,38 @@ public class DriverProgram {
     
 
     }
+
+    public void conteoMenu(Scanner in, FileManager lector){
+
+        System.out.println("Seleccione una opción:");
+        System.out.println("1. Contar materiales por género");
+        System.out.println("2. Contar materiales por autor");
+        System.out.println("3. Contar materiales por año de publicación");
+
+        System.out.print("Opción: ");
+        int op = in.nextInt();
+
+        if (op == 1){
+            Map<String, Integer> conteoPorGenero = lector.contarMaterialesPorGenero();
+            System.out.println("Conteo por genero:");
+            for (Map.Entry<String, Integer> entry : conteoPorGenero.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        } else if (op == 2){
+            Map<String, Integer> conteoPorAutor = lector.contarMaterialesPorAutor();
+            System.out.println("Conteo por autor:");
+            for (Map.Entry<String, Integer> entry : conteoPorAutor.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        } else if (op == 3){
+            Map<String, Integer> conteoPorAutor = lector.contarMaterialesPorAño();
+            System.out.println("Conteo por Año:");
+            for (Map.Entry<String, Integer> entry : conteoPorAutor.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        }
+
+    } 
         
     public static void main(String[] args) {
         //Instancia del Driver para acceder a las demas funciones
