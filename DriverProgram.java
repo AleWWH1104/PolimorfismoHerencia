@@ -8,27 +8,31 @@ public class DriverProgram {
     String rutaArchivo = "/Users/alejandraayala/Desktop/Proyectos_POOS2/PolimorfismoHerencia/Bibliografias.csv";
 
     public DriverProgram(){
-        // Crear un objeto para leer el archivo existente
+        Scanner in = new Scanner(System.in);
         FileManager lector = new FileManager(rutaArchivo);
-        List<String[]> contenidoCSV = lector.leerCSV();
-
-        // Procesar el contenido del archivo CSV si es necesario
-        for (String[] fila : contenidoCSV) {
-            // Realizar operaciones con las filas, si es necesario
-            for (String elemento : fila) {
-                System.out.print(elemento + " ");
+        boolean salir = false;
+        while (!salir) {
+        System.out.println("1.Generar referencia");
+        System.out.println("2.Mostrar conteo de Materiales");
+        System.out.println("3.Mostrar Catalogo con citas");
+        System.out.println("4.Salir");
+        String opcion = in.nextLine();
+        switch (opcion){
+            case "1":
+                datos(in);
+                System.out.println("_____Escribiendo en CSV_____");
+                lector.escribirCSV(catalogo);
+                catalogo.clear(); //Se limpia la lista para no sobreescribir en el CSV
+                break;
+            case "2":
+            case "3":
+            case "4":
+                salir = true;
             }
-            System.out.println();
         }
-        datos();
-        // System.out.println("_____Impresion Lista_____");
-        // for (MaterialBibliografico referencia: catalogo){
-        //     System.out.println(referencia);
-        // }
     }
 
-    public void datos(){
-        Scanner in = new Scanner(System.in);
+    public void datos(Scanner in){
         System.out.print("Nombre del material: ");
         String nombre = in.nextLine();
         System.out.print("Editorial/Compañia: ");

@@ -18,7 +18,7 @@ public class FileManager {
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] elementos = linea.split(";");
+                String[] elementos = linea.split(",");
                 lineasCSV.add(elementos);
             }
         } catch (IOException e) {
@@ -29,15 +29,30 @@ public class FileManager {
         return lineasCSV;
     }
 
-    public void escribirCSV(List<String[]> contenidoCSV) {
-        try (FileWriter writer = new FileWriter(rutaArchivo)) {
-            for (String[] fila : contenidoCSV) {
-                String filaCSV = String.join(";", fila);
-                writer.write(filaCSV + "\n");
+    public void escribirCSV(List<MaterialBibliografico> contenidoCSV) {
+        try {
+            // Leer el contenido existente del archivo
+            List<String[]> contenidoExistente = leerCSV();
+
+            for (MaterialBibliografico fila : contenidoCSV) {
+                String filaCSV = fila.getNombre() + "," +
+                                 fila.getEditorial() + "," +
+                                 fila.getAño() + "," +
+                                 fila.getGenero() + "," +
+                                 fila.getAutor() + "," +
+                                 fila.getTipo();
+                contenidoExistente.add(filaCSV.split(","));
+            }
+
+            // Escribir todo de nuevo en el archivo
+            try (FileWriter writer = new FileWriter(rutaArchivo)) {
+                for (String[] fila : contenidoExistente) {
+                    String filaCSV = String.join(",", fila);
+                    writer.write(filaCSV + "\n");
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
