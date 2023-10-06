@@ -67,7 +67,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaL =libro.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaL + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
+            lectorCitas.agregarCitaAPA(referenciaL + "  - Cita: (" + autorA + ", "+ anio + ")");
             System.out.println(referenciaL);
 
         } else if ("2".equalsIgnoreCase(tipo)){
@@ -76,7 +76,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaD =dvd.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaD + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
+            lectorCitas.agregarCitaAPA(referenciaD + "  - Cita: (" + autorA + ", "+ anio + ")");
             System.out.println(referenciaD);   
 
         } else if ("3".equalsIgnoreCase(tipo)){
@@ -87,7 +87,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaP =per.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaP + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
+            lectorCitas.agregarCitaAPA(referenciaP + "  - Cita: (" + autorA + ", "+ anio + ")");
             System.out.println(referenciaP); 
 
         } else if ("4".equalsIgnoreCase(tipo)){
@@ -101,7 +101,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaAC =artCient.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaAC + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
+            lectorCitas.agregarCitaAPA(referenciaAC + "  - Cita: (" + autorA + ", "+ anio + ")");
             System.out.println(referenciaAC); 
 
         } else if ("5".equalsIgnoreCase(tipo)){
@@ -113,7 +113,7 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaT =tesis.generarReferencia();
 
-            lectorCitas.agregarCitaAPA(referenciaT + "  - Cita: (" + MaterialBibliografico.nombreReferencia(autorA, autorN) + ", "+ anio + ")");
+            lectorCitas.agregarCitaAPA(referenciaT + "  - Cita: (" + autorA + ", "+ anio + ")");
             System.out.println(referenciaT); 
 
 
@@ -170,7 +170,7 @@ public class DriverProgram {
             String[] filaCitas = contenidoCitas.get(i);
     
             System.out.println("Datos: " + String.join(",", filaBibliografias));
-            System.out.println("Cita: " + String.join(",", filaCitas));
+            System.out.println("Referencia: " + String.join(",", filaCitas));
             System.out.println();
         }
     }
