@@ -21,7 +21,7 @@ public class ArtCientifico extends MaterialBibliografico{
 
     @Override
     public String generarReferencia() {
-        return nombreReferencia(autorN, autorA) + "(" + getAño()+ ")." + getNombre() + getEditorial() +" ("+ getVolumen()+") Páginas. "  + getDoi();
+        return nombreReferencia(autorN, autorA) + "(" + getAño()+ ")." + getNombre() + getEditorial() +" ("+ getVolumen()+"). "  + getDoi();
     }
     
 }

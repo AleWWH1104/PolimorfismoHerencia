@@ -55,12 +55,14 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaL =libro.generarReferencia();
             System.out.println(referenciaL);
+
         } else if ("2".equalsIgnoreCase(tipo)){
             DVD dvd = new DVD(nombre, editorial, anio, genero, autorN, autorA, "DVD");
             catalogo.add(dvd);
             System.out.println("------Impresion de Referencia------");
             String referenciaD =dvd.generarReferencia();
             System.out.println(referenciaD);   
+
         } else if ("3".equalsIgnoreCase(tipo)){
             System.out.print("Ingrese link: ");
             String link = in.nextLine();
@@ -69,7 +71,33 @@ public class DriverProgram {
             System.out.println("------Impresion de Referencia------");
             String referenciaP =per.generarReferencia();
             System.out.println(referenciaP); 
+
+        } else if ("4".equalsIgnoreCase(tipo)){
+            System.out.print("Ingrese DOI: ");
+            String doi = in.nextLine();
+            System.out.print("Ingrese Volumen: ");
+            String volumen = in.nextLine();
+
+            ArtCientifico artCient = new ArtCientifico(nombre, editorial, anio, genero, autorN, autorA, "Articulo Cientifico", doi, volumen);
+            catalogo.add(artCient);
+            System.out.println("------Impresion de Referencia------");
+            String referenciaP =artCient.generarReferencia();
+            System.out.println(referenciaP); 
+
+        } else if ("5".equalsIgnoreCase(tipo)){
+            System.out.print("Ingrese El Nombre de la institucion: ");
+            String nombreInst = in.nextLine();
+
+            Tesis tesis = new Tesis(nombre, editorial, anio, genero, autorN, autorA, "Tesis", nombreInst);
+            catalogo.add(tesis);
+            System.out.println("------Impresion de Referencia------");
+            String referenciaP =tesis.generarReferencia();
+            System.out.println(referenciaP); 
+
+
         }
+    
+
     }
         
     public static void main(String[] args) {
