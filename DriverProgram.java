@@ -8,10 +8,13 @@ public class DriverProgram {
     // Ruta del archivo CSV
     //String rutaArchivo = "/Users/alejandraayala/Desktop/Proyectos_POOS2/PolimorfismoHerencia/Bibliografias.csv";
     String rutaArchivo = "Bibliografias.csv";
+    String rutaArchivoCitas = "Citas.csv";
 
     public DriverProgram(){
         Scanner in = new Scanner(System.in);
         FileManager lector = new FileManager(rutaArchivo);
+        FileManager lectorCitas = new FileManager(rutaArchivoCitas);
+
         boolean salir = false;
         while (!salir) {
         System.out.println("1.Generar referencia");
@@ -21,7 +24,7 @@ public class DriverProgram {
         String opcion = in.nextLine();
         switch (opcion){
             case "1":
-                datos(in);
+                datos(in, lectorCitas);
                 System.out.println("_____Escribiendo en CSV_____");
                 lector.escribirCSV(catalogo);
                 catalogo.clear(); //Se limpia la lista para no sobreescribir en el CSV
@@ -30,15 +33,19 @@ public class DriverProgram {
                 
                 conteoMenu(in, lector);
                 break;
-                
+
             case "3":
+
+                //mostrarCatalogoConCitas(lector);
+                break;
+
             case "4":
                 salir = true;
             }
         }
     }
 
-    public void datos(Scanner in){
+    public void datos(Scanner in, FileManager lectorCitas){
         System.out.print("Nombre del material: ");
         String nombre = in.nextLine();
         System.out.print("Editorial/Compañia: ");
@@ -59,6 +66,8 @@ public class DriverProgram {
             catalogo.add(libro);
             System.out.println("------Impresion de Referencia------");
             String referenciaL =libro.generarReferencia();
+
+            lectorCitas.agregarCitaAPA(referenciaL);
             System.out.println(referenciaL);
 
         } else if ("2".equalsIgnoreCase(tipo)){
@@ -66,6 +75,8 @@ public class DriverProgram {
             catalogo.add(dvd);
             System.out.println("------Impresion de Referencia------");
             String referenciaD =dvd.generarReferencia();
+
+            lectorCitas.agregarCitaAPA(referenciaD);
             System.out.println(referenciaD);   
 
         } else if ("3".equalsIgnoreCase(tipo)){
@@ -75,6 +86,8 @@ public class DriverProgram {
             catalogo.add(per);
             System.out.println("------Impresion de Referencia------");
             String referenciaP =per.generarReferencia();
+
+            lectorCitas.agregarCitaAPA(referenciaP);
             System.out.println(referenciaP); 
 
         } else if ("4".equalsIgnoreCase(tipo)){
@@ -86,8 +99,10 @@ public class DriverProgram {
             ArtCientifico artCient = new ArtCientifico(nombre, editorial, anio, genero, autorN, autorA, "Articulo Cientifico", doi, volumen);
             catalogo.add(artCient);
             System.out.println("------Impresion de Referencia------");
-            String referenciaP =artCient.generarReferencia();
-            System.out.println(referenciaP); 
+            String referenciaAC =artCient.generarReferencia();
+
+            lectorCitas.agregarCitaAPA(referenciaAC);
+            System.out.println(referenciaAC); 
 
         } else if ("5".equalsIgnoreCase(tipo)){
             System.out.print("Ingrese El Nombre de la institucion: ");
@@ -96,8 +111,10 @@ public class DriverProgram {
             Tesis tesis = new Tesis(nombre, editorial, anio, genero, autorN, autorA, "Tesis", nombreInst);
             catalogo.add(tesis);
             System.out.println("------Impresion de Referencia------");
-            String referenciaP =tesis.generarReferencia();
-            System.out.println(referenciaP); 
+            String referenciaT =tesis.generarReferencia();
+
+            lectorCitas.agregarCitaAPA(referenciaT);
+            System.out.println(referenciaT); 
 
 
         }
@@ -136,6 +153,19 @@ public class DriverProgram {
         }
 
     } 
+
+    /*
+    public void mostrarCatalogoConCitas(FileManager lector) {
+        List<String[]> contenidoExistente = lector.leerCSV();
+
+        System.out.println("Catalogo con Citas:");
+        for (MaterialBibliografico material : catalogo) {
+            String referencia = material.generarReferencia();
+            System.out.println(referencia);
+        }
+    } 
+    */
+    
         
     public static void main(String[] args) {
         //Instancia del Driver para acceder a las demas funciones

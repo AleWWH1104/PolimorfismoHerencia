@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -105,5 +106,14 @@ public class FileManager {
         }
 
         return conteoPorAño;
+    }
+
+    public void agregarCitaAPA(String nuevaCitaAPA) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+            writer.write(nuevaCitaAPA + "\n");
+            System.out.println("Nueva cita APA agregada al archivo.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
