@@ -51,6 +51,6 @@ public class ArtCientifico extends MaterialBibliografico {
     @Override
     public String generarReferencia() {
         // Formato APA para artículo científico: Autor/a(s) del artículo. (Año de publicación). Título del artículo. Título de la revista científica, Volumen (Número de emisión), Páginas. DOI o URL
-        return nombreReferencia(autorN, autorA) + " (" + getAño() + "). " + getNombre() + ". " + getEditorial() + ", " + getVolumen() + ". " + getDoi();
+        return nombreReferencia(autorN, autorA) + "(" + getAño() + ")." + getNombre() + "." + getEditorial() + "," + getVolumen() + "." + getDoi();
     }
 }

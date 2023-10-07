@@ -40,6 +40,6 @@ public class Periodico extends MaterialBibliografico {
     @Override
     public String generarReferencia() {
         // Formato APA para periódico: Autor/a(s) del artículo. (Año de publicación). Título del artículo. Título del periódico, Enlace.
-        return nombreReferencia(autorN, autorA) + " (" + getAño() + "). " + getNombre() + ". " + getEditorial() + ". " + getLink();
+        return nombreReferencia(autorN, autorA) + "(" + getAño() + ")." + getNombre() + "." + getEditorial() + "." + getLink();
     }
 }

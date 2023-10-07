@@ -28,6 +28,6 @@ public class DVD extends MaterialBibliografico {
     @Override
     public String generarReferencia() {
         // Formato APA para DVD: Autor/a(s) del DVD. (Año de publicación). Título del DVD. [DVD]. Editorial.
-        return nombreReferencia(autorN, autorA) + " (" + getAño() + "). " + getNombre() + ". [DVD]. " + getEditorial() + ".";
+        return nombreReferencia(autorN, autorA) + "(" + getAño() + ")." + getNombre() + ".[DVD]." + getEditorial() + ".";
     }
 }

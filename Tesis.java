@@ -40,6 +40,6 @@ public class Tesis extends MaterialBibliografico {
     @Override
     public String generarReferencia() {
         // Formato APA para tesis: Autor, A. (Año). Título de la tesis [Tipo de tesis para optar un grado o título inédita]. Nombre de la institución que otorga el título.
-        return nombreReferencia(autorN, autorA) + " (" + getAño() + "). " + getNombre() + " [" + getTipo() + "] " + getNombreInst() + ".";
+        return nombreReferencia(autorN, autorA) + "(" + getAño() + ")." + getNombre() + "[" + getTipo() + "]" + getNombreInst() + ".";
     }
 }

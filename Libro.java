@@ -29,6 +29,6 @@ public class Libro extends MaterialBibliografico {
     @Override
     public String generarReferencia() {
         // Formato APA para libro: Autor/a(s) del libro. (Año de publicación). Título del libro. Editorial.
-        return nombreReferencia(autorN, autorA) + " (" + getAño() + "). " + getNombre() + ". " + getEditorial() + ".";
+        return nombreReferencia(autorN, autorA) + "(" + getAño() + ")." + getNombre() + "." + getEditorial() + ".";
     }
 }
