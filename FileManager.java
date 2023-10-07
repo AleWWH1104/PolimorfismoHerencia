@@ -1,3 +1,12 @@
+/**
+ * La clase FileManager proporciona métodos para leer y escribir archivos CSV,
+ * así como para realizar operaciones de conteo y agregar citas APA a un archivo.
+ * @author David Dominguez
+ * @author Iris Ayala
+ * @version 1.0
+ * @since 2023-10-06
+ */
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -11,10 +20,18 @@ import java.util.Map;
 public class FileManager {
     String rutaArchivo;
 
+    /**
+     * Constructor de la clase FileManager.
+     * @param rutaArchivo Ruta del archivo CSV que se va a gestionar.
+     */
     public FileManager(String rutaArchivo) {
         this.rutaArchivo = rutaArchivo;
     }
 
+    /**
+     * Lee un archivo CSV y devuelve sus líneas como una lista de arreglos de cadenas.
+     * @return Lista de arreglos de cadenas representando las líneas del archivo CSV.
+     */
     public List<String[]> leerCSV() {
         List<String[]> lineasCSV = new ArrayList<>();
 
@@ -32,6 +49,10 @@ public class FileManager {
         return lineasCSV;
     }
 
+    /**
+     * Escribe una lista de objetos MaterialBibliografico en un archivo CSV.
+     * @param contenidoCSV Lista de objetos MaterialBibliografico para escribir en el archivo.
+     */
     public void escribirCSV(List<MaterialBibliografico> contenidoCSV) {
         try {
             // Leer el contenido existente del archivo
@@ -59,7 +80,12 @@ public class FileManager {
         }
     }
 
-    // Espacio Para realizar metodos deel el conteo
+    // Espacio para realizar métodos de conteo
+
+    /**
+     * Realiza el conteo de materiales por género a partir de un archivo CSV.
+     * @return Mapa que contiene el conteo de materiales por género.
+     */
     public Map<String, Integer> contarMaterialesPorGenero() {
         List<String[]> lineasCSV = leerCSV();
         Map<String, Integer> conteoPorGenero = new HashMap<>();
@@ -76,6 +102,10 @@ public class FileManager {
         return conteoPorGenero;
     } 
 
+    /**
+     * Realiza el conteo de materiales por autor a partir de un archivo CSV.
+     * @return Mapa que contiene el conteo de materiales por autor.
+     */
     public Map<String, Integer> contarMaterialesPorAutor() {
         List<String[]> lineasCSV = leerCSV();
         Map<String, Integer> conteoPorAutor = new HashMap<>();
@@ -92,6 +122,10 @@ public class FileManager {
         return conteoPorAutor;
     }
 
+    /**
+     * Realiza el conteo de materiales por año de publicación a partir de un archivo CSV.
+     * @return Mapa que contiene el conteo de materiales por año de publicación.
+     */
     public Map<String, Integer> contarMaterialesPorAño() {
         List<String[]> lineasCSV = leerCSV();
         Map<String, Integer> conteoPorAño = new HashMap<>();
@@ -108,6 +142,10 @@ public class FileManager {
         return conteoPorAño;
     }
 
+    /**
+     * Agrega una nueva cita APA al final de un archivo.
+     * @param nuevaCitaAPA La cita APA a agregar al archivo.
+     */
     public void agregarCitaAPA(String nuevaCitaAPA) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
             writer.write(nuevaCitaAPA + "\n");

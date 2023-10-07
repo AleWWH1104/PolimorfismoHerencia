@@ -1,3 +1,12 @@
+/**
+ * La clase DriverProgram es una aplicación para gestionar un catálogo de materiales bibliográficos
+ * y realizar operaciones como generar referencias, mostrar conteos y mostrar el catálogo con citas.
+ * @author David Dominguez
+ * @author Iris Ayala
+ * @version 1.0
+ * @since 2023-10-06
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +18,10 @@ public class DriverProgram {
     //String rutaArchivo = "/Users/alejandraayala/Desktop/Proyectos_POOS2/PolimorfismoHerencia/Bibliografias.csv";
     String rutaArchivo = "Bibliografias.csv";
     String rutaArchivoCitas = "Citas.csv";
-
+    
+    /**
+     * Constructor de la clase DriverProgram. Inicializa un bucle de menú para interactuar con el programa.
+     */
     public DriverProgram(){
         Scanner in = new Scanner(System.in);
         FileManager lector = new FileManager(rutaArchivo);
@@ -45,6 +57,11 @@ public class DriverProgram {
         }
     }
 
+    /**
+     * Método para ingresar datos de un material bibliográfico y generar referencias.
+     * @param in Scanner para entrada de datos desde el teclado.
+     * @param lectorCitas FileManager para gestionar el archivo de citas.
+     */
     public void datos(Scanner in, FileManager lectorCitas){
         System.out.print("Nombre del material: ");
         String nombre = in.nextLine();
@@ -122,6 +139,11 @@ public class DriverProgram {
 
     }
 
+    /**
+     * Método para mostrar un menú de opciones de conteo de materiales y realizar la operación seleccionada.
+     * @param in Scanner para entrada de datos desde el teclado.
+     * @param lector FileManager para gestionar el archivo CSV de materiales bibliográficos.
+     */
     public void conteoMenu(Scanner in, FileManager lector){
 
         System.out.println("Seleccione una opción:");
@@ -154,6 +176,12 @@ public class DriverProgram {
 
     } 
 
+    /**
+     * Método para mostrar el catálogo de materiales bibliográficos con sus respectivas citas.
+     * @param lectorBibliografias FileManager para gestionar el archivo CSV de bibliografías.
+     * @param lectorCitas FileManager para gestionar el archivo CSV de citas.
+     */
+
     public void mostrarCatalogoConCitas(FileManager lectorBibliografias, FileManager lectorCitas) {
         List<String[]> contenidoBibliografias = lectorBibliografias.leerCSV();
         List<String[]> contenidoCitas = lectorCitas.leerCSV();
@@ -174,7 +202,11 @@ public class DriverProgram {
             System.out.println();
         }
     }
-        
+
+    /**
+     * Método principal que crea una instancia de la clase DriverProgram para ejecutar la aplicación.
+     * @param args Argumentos de línea de comandos (no se utilizan en este programa).
+     */
     public static void main(String[] args) {
         //Instancia del Driver para acceder a las demas funciones
         DriverProgram main = new DriverProgram();
